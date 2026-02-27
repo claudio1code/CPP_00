@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 15:56:18 by clados-s          #+#    #+#             */
-/*   Updated: 2026/02/27 14:55:16 by clados-s         ###   ########.fr       */
+/*   Updated: 2026/02/27 15:49:17 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,19 @@ void PhoneBook::searchContact() const{
 				  << std::setw(10) << formatedField(contacts[i].getLastName()) << "|"
 				  << std::setw(10) << formatedField(contacts[i].getNickName()) << std::endl;
 	}
-
+	
+	std::string input = getValidInput("Digite o index para expandir: ");
+	if (!PhoneBook::isNumber(input))
+	{
+		std::cout << "Erro: o index deve ser um número!" << std::endl;
+		return;
+	}
+	int idx = convertNumber(input);
+	if (idx < 0 || idx > total_contact){
+		std::cout << "Erro: index fora dos limites ou contato inexistente!" << std::endl;
+		return;
+	}
+	std::cout << "\n--- Detlhes do Contato ---" << std::endl;
+	
 	
 } 
