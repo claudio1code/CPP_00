@@ -8,10 +8,12 @@ NAME = phonebook
 CPP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = 
+SRCS = PhoneBook.cpp \
+	   Contact.cpp \
+	   main.cpp
 OBJS_DIR = objs/
 
-OBJS = $(addprefix $(OBJS_DIR), $(SRCS: .cpp=.o))
+OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.cpp=.o))
 
 all: $(NAME)
 
@@ -24,15 +26,15 @@ $(OBJS_DIR)%.o: %.cpp
 	@mkdir -p $(dir $@)
 	@printf "$(BLUE)Compiling $<... $(RESET)"
 	@$(CPP) $(FLAGS) -c $< -o $@
-	@printf "\b$(GREEN)OK!$(RESET)\n
+	@printf "\b$(GREEN)OK!$(RESET)\n"
 
 clean:
 	@rm -rf $(OBJS_DIR)
-	@printf "$(RED) Objects cleaned!$(RESET)"
+	@printf "$(RED) Objects cleaned!$(RESET)\n"
 
 fclean: clean
-	@rm -rf $(NAME)
-	@printf "$(RED) Executable cleaned!$(RESET)"
+	@rm -f $(NAME)
+	@printf "$(RED) Executable cleaned!$(RESET)\n"
 
 re: fclean all
 
