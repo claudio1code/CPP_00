@@ -11,9 +11,7 @@ class PhoneBook
 		int index;
 		std::string getValidInput(const std::string& prompt) const;
 		std::string formatedField(std::string text) const;
-		bool isNumber(std::string text) const;
 		int convertNumber(std::string nbr) const;
-		bool validIndex(std::string nbr) const;
 
 	public:
 		PhoneBook();
