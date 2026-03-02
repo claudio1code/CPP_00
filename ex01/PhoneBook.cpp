@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 15:56:18 by clados-s          #+#    #+#             */
-/*   Updated: 2026/02/27 15:49:17 by clados-s         ###   ########.fr       */
+/*   Updated: 2026/03/02 11:15:33 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,20 @@ std::string PhoneBook::formatedField(std::string text) const{
 }
 
 bool PhoneBook::isNumber(std::string text) const{
+	if (text.empty())
+		return false;
 	for (size_t i = 0; i < text.length(); i++)
 	{
 		if (!(std::isdigit(text[i])))
 			return false;
 	}
+	return true;
+}
+
+bool PhoneBook::validIndex(std::string n) const{
+	int verific = std::atoi(n.c_str());
+	if (verific > 7 || verific < 0)
+		return false;
 	return true;
 }
 
@@ -84,6 +93,11 @@ void PhoneBook::searchContact() const{
 	}
 	
 	std::string input = getValidInput("Digite o index para expandir: ");
+	if (!PhoneBook::validIndex(input))
+	{
+		std::cout << "Erro: index fora dos limites ou contato inexistente!" << std::endl;
+		return;
+	}
 	if (!PhoneBook::isNumber(input))
 	{
 		std::cout << "Erro: o index deve ser um número!" << std::endl;
@@ -95,6 +109,10 @@ void PhoneBook::searchContact() const{
 		return;
 	}
 	std::cout << "\n--- Detlhes do Contato ---" << std::endl;
-	
+	std::cout << "First Name: " << contacts[idx].getFirstName() << std::endl;
+	std::cout << "Last Name: " << contacts[idx].getLastName() << std::endl;
+	std::cout << "Nick Name: " << contacts[idx].getNickName() << std::endl;
+	std::cout << "Phone Number: " << contacts[idx].getPhoneNumber() << std::endl;
+	std::cout << "Obscure Secret: " << contacts[idx].getObscureSecret() << std::endl;
 	
 } 

@@ -6,7 +6,7 @@
 /*   By: clados-s <clados-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 15:56:06 by clados-s          #+#    #+#             */
-/*   Updated: 2026/02/27 15:59:09 by clados-s         ###   ########.fr       */
+/*   Updated: 2026/03/02 10:54:02 by clados-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,9 @@ int main(int argc, char **argv)
 		}
 		if (command == "ADD")
 			agenda.addContact();
-		if (command == "SEARCH")
+		else if (command == "SEARCH")
 			agenda.searchContact();
-		if (command == "EXIT")
+		else if (command == "EXIT")
 		break;
 	}
-	
 }
